@@ -1,0 +1,7 @@
+{
+  "name": "ASTUASSISTANT - Fluid Campus Intelligence",
+  "description": "A high-fidelity 3D fluid UI for ASTU students, featuring Gemini-powered intelligence, campus mapping, and digital resources.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

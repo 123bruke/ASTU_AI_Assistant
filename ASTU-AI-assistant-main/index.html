@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTUASSISTANT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --title-color: #3b82f6;
+            --mouse-x: 0px;
+            --mouse-y: 0px;
+            --tilt-x: 0deg;
+            --tilt-y: 0deg;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #f8fafc;
+            user-select: none;
+        }
+        .dark body {
+            background: #020617;
+        }
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.15);
+        }
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.5);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Custom Smooth Scrollbar */
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: rgba(59, 130, 246, 0.3);
+            border-radius: 10px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: rgba(59, 130, 246, 0.6);
+        }
+
+        .astu-title {
+            background: linear-gradient(to right, var(--title-color), #06b6d4, #8b5cf6, var(--title-color));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 5s linear infinite;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: rotateX(var(--tilt-y)) rotateY(var(--tilt-x));
+        }
+        
+        .watermark-bg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            font-size: 15vw;
+            font-weight: 900;
+            color: rgba(59, 130, 246, 0.03);
+            pointer-events: none;
+            z-index: -1;
+            white-space: nowrap;
+            text-transform: uppercase;
+        }
+        .dark .watermark-bg {
+            color: rgba(255, 255, 255, 0.02);
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+        
+        .interactive-card {
+            transition: transform 0.1s ease-out;
+            transform: rotateX(var(--tilt-y)) rotateY(var(--tilt-x));
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(calc(var(--mouse-x) * 0.02), calc(var(--mouse-y) * 0.02)) scale(1.05); }
+        }
+        .droplet {
+            animation: float 15s ease-in-out infinite;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4"
+  }
+}
+</script>
+</head>
+<body class="transition-colors duration-700">
+    <div class="watermark-bg">ASTU AI</div>
+    <div id="root"></div>
+</body>
+</html>
