@@ -1,12 +1,120 @@
-POWERED BY ASTU AI CLUB *
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASTU AI Assistant Animation</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #111;
+    color: #0ff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+  }
 
-Install dependencies: npm install
-Set the GEMINI_API_KEY in .env.local to your Gemini API key
+  .typewriter {
+    display: inline-block;
+    overflow: hidden;
+    border-right: 0.15em solid #0ff; /* Cursor */
+    white-space: nowrap;
+    animation: blink-cursor 0.7s steps(1) infinite;
+  }
 
-Run the app: npm run dev 🎓 ASTU AI Assistant – 3D Interactive AI Web Application 📌 Overview ASTU AI Assistant is a 3D interactive AI-powered web application developed to support students at Adama Science and Technology University (ASTU). The platform allows students to ask academic questions, request support, find campus locations, and connect with teachers through an intelligent AI assistant. The system is powered by Google Gemini AI, which understands student questions and provides clear and helpful responses. The application is built entirely using TypeScript, ensuring a scalable and maintainable codebase. This project aims to improve communication between students, teachers, and university services while providing a modern 3D interactive experience. 🚀 Features 🤖 AI Academic Assistant AI chatbot powered by Google Gemini API Understands natural language questions Provides clear and intelligent answers 🎓 Student Support Ask questions about courses Request academic help Get guidance for university services 👨‍🏫 Teacher Connection Helps students communicate with teachers Enables academic interaction and support 🗺️ Campus Navigation Helps students find ASTU locations Easy navigation for buildings and facilities 🌐 3D Interactive Interface Modern 3D web experience Interactive user interface Engaging and visually attractive design 🧠 Technology Stack Frontend TypeScript HTML5 CSS3 3D Web Technology (Three.js / WebGL) Backend TypeScript Node.js Express.js Artificial Intelligence Google Gemini API Database MongoDB / PostgreSQL (optional depending on deployment) 📂 Project Structure Copy code
-ASTU-AI-Assistant │ ├── frontend │
-├── src │ │ ├── main.ts │ │ ├── components │ 
-│ └── styles │ ├── backend │ ├── src │ │ ├── server.ts │ 
-│ ├── routes │ │ └── controllers │ ├── public │ ├── assets │ └── 3d_models │ ├── package.json ├── tsconfig.json └── README.md ⚙️ Installation 1️⃣ Clone the repository Bash Copy code git clone https://github.com/yourusername/astu-ai-assistant.git 2️⃣ Go to project directory Bash Copy code cd astu-ai-assistant 3️⃣ Install dependencies Bash Copy code npm install 4️⃣ Run development server Bash Copy code npm run dev 🔑 Environment Variables Create a .env file: Copy code
+  @keyframes blink-cursor {
+    0%, 50%, 100% { border-color: #0ff; }
+    25%, 75% { border-color: transparent; }
+  }
 
-GEMINI_API_KEY=your_gemini_api_key PORT=3000 💡 Future Improvements Voice-based AI assistant Real-time teacher communication ASTU course recommendation system Mobile application version Student portal integration
+  .text {
+    display: inline;
+  }
+
+  /* Typing and deleting animations */
+  @keyframes typing1 {
+    0% { width: 0ch; }
+    100% { width: 18ch; } /* ASTU AI ASSISTANT */
+  }
+
+  @keyframes deleting1 {
+    0% { width: 18ch; }
+    100% { width: 0ch; }
+  }
+
+  @keyframes typing2 {
+    0% { width: 0ch; }
+    100% { width: 14ch; } /* SHOW AI POWERED */
+  }
+
+  @keyframes deleting2 {
+    0% { width: 14ch; }
+    100% { width: 0ch; }
+  }
+
+  .typewriter span {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .line1 {
+    animation: typing1 2s steps(18) forwards, deleting1 2s steps(18) 4s forwards;
+  }
+
+  .line2 {
+    animation: typing2 2s steps(14) 6s forwards, deleting2 2s steps(14) 10s forwards;
+  }
+
+  /* Infinite loop */
+  .typewriter {
+    animation: none;
+  }
+
+  .wrapper {
+    display: inline-block;
+  }
+
+</style>
+</head>
+<body>
+  <div class="typewriter wrapper">
+    <span class="line1">ASTU AI ASSISTANT</span>
+    <span class="line2"></span>
+  </div>
+
+<script>
+  // JavaScript to loop the animation infinitely
+  const wrapper = document.querySelector('.wrapper');
+  const line1 = document.querySelector('.line1');
+  const line2 = document.querySelector('.line2');
+
+  function runAnimation() {
+    line1.textContent = "ASTU AI ASSISTANT";
+    line1.style.width = '0ch';
+    line2.textContent = "SHOW AI POWERED";
+    line2.style.width = '0ch';
+
+    // Animate line1
+    line1.animate([{ width: '0ch' }, { width: '18ch' }], { duration: 2000, fill: 'forwards' })
+      .onfinish = () => {
+        line1.animate([{ width: '18ch' }, { width: '0ch' }], { duration: 2000, fill: 'forwards' })
+        .onfinish = () => {
+          // Animate line2
+          line2.animate([{ width: '0ch' }, { width: '14ch' }], { duration: 2000, fill: 'forwards' })
+          .onfinish = () => {
+            line2.animate([{ width: '14ch' }, { width: '0ch' }], { duration: 2000, fill: 'forwards' })
+            .onfinish = () => {
+              runAnimation(); // repeat
+            }
+          }
+        }
+      }
+  }
+
+  runAnimation();
+</script>
+</body>
+</html>
